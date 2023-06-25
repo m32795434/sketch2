@@ -9,10 +9,16 @@
 
 <body>
   <div class="wrapper">
-    <label for="SCALE">
-      DOT SCALE:
-      <input value="1" type="range" name="SCALE" min="0.5" max="10" step="0.5">
-    </label>
+    <div class="controls">
+      <label for="SCALE">
+        DOT SCALE:
+        <input value="1" type="range" name="SCALE" min="0.5" max="10" step="0.5">
+      </label>
+      <label for="SCALE">
+        Choose a color:
+      </label>
+      <toolcool-color-picker color="#e76ff1"></toolcool-color-picker>
+    </div>
     <div class="canvasWrap">
       <canvas width="2600" height="1200" id="etch-a-sketch"></canvas>
       <div class="buttons">
@@ -39,12 +45,26 @@
       margin-top: 50px;
     }
 
-    .wrapper label {
+    .controls {
+      display: flex;
+      gap: .5rem;
+      justify-content: space-between;
+      align-content: flex-end;
+      align-items: end;
+    }
+
+    .controls label {
+      flex-grow: 1;
       position: relative;
       z-index: 2;
       color: white;
       background-color: black;
     }
+
+    toolcool-color-picker {
+      flex-grow: 2;
+    }
+
 
     button.shake {
       padding: 10px;
@@ -131,6 +151,8 @@
     }
   </style>
   <script src="./etch-a-sketch.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/toolcool-color-picker/dist/toolcool-color-picker.min.js"></script>
 </body>
 
 </html>
