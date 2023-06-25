@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etch A Sketch</title>
+</head>
+
+<body>
+  <div class="wrapper">
+    <label for="SCALE">
+      DOT SCALE:
+      <input value="1" type="range" name="SCALE" min="0.5" max="10" step="0.5">
+    </label>
+    <div class="canvasWrap">
+      <canvas width="3200" height="2000" id="etch-a-sketch"></canvas>
+      <div class="buttons">
+        <button class="shake">Shake!</button>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      /* height: 100%; */
+      /* width: 100%; */
+      display: grid;
+      align-content: center;
+      justify-content: center;
+      background: white;
+      background: url(https://s3.amazonaws.com/media.locally.net/original/HABA_ALT_2017-08-02-13-22-45.jpg);
+      background-size: cover;
+    }
+
+    .wrapper {
+      margin-top: 50px;
+    }
+
+    .wrapper label {
+      position: relative;
+      z-index: 2;
+      color: white;
+      background-color: black;
+    }
+
+    button.shake {
+      padding: 10px;
+      border-radius: 2px;
+      background-color: blueviolet;
+      color: white;
+    }
+
+    .wrapper canvas {
+      outline: 50px solid #e80000;
+      border-radius: 5px;
+      width: 1600px;
+      height: 800px;
+      background: white;
+      /* Disable scrolling when touching the canvas*/
+      touch-action: none;
+    }
+
+    @media (min-width: 1024px) and (max-width: 1370px) {
+      .wrapper canvas {
+        width: 950px;
+        height: 450px;
+      }
+    }
+
+    @media (min-width: 844px) and (max-width: 1023px) {
+      .wrapper canvas {
+        outline: 10px solid #e80000;
+        width: 400px;
+        height: 100px;
+      }
+
+      button.shake {
+        padding: 3px;
+      }
+
+      .wrapper {
+        margin-top: 5px;
+      }
+    }
+
+    canvas.shake {
+      animation: shake 0.5s linear 1;
+    }
+
+    @keyframes shake {
+
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      40%,
+      60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+  </style>
+  <script src="./etch-a-sketch.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "etch-a-sketch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "etch-a-sketch.js",
+  "scripts": {
+    "start": "parcel serve index.html --public-url / --dist-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build index.html --public-url ./ --dist-dir docs"
+  },
+  "author": "Manuel Bravard",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.9.2"
+  }
+}
