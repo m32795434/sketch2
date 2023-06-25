@@ -65,14 +65,14 @@ function handleEvent(event, localX, localY) {
     y = event.touches[0].clientY - canvas.offsetTop;
   }
   const visualWidth = window.visualViewport.width;
-  if (visualWidth >= 1024 && visualWidth <= 1370) {
+  if (visualWidth >= 1024 && visualWidth <= 1180) {
     console.log('drawing down 915');
-    draw(x * 3.3684, y * 4.4444);
+    draw(x * 3.3684, y * 4.4444);//width: 950px; height: 450px;
   } else if (visualWidth >= 844 && visualWidth < 1023) {
     draw(x * 3.79146, y * 4.4444);
   } else {
     // desktop
-    draw(x * 2, y * 2.5);
+    draw(x * 2, y * 2);//width: 1300px;height: 600px;
     console.log('drawing upper 915');
   }
 }
