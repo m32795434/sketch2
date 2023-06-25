@@ -15,9 +15,17 @@
         <input value="1" type="range" name="SCALE" min="0.5" max="10" step="0.5">
       </label>
       <label for="SCALE">
-        Choose a color:
+        Color:
       </label>
-      <toolcool-color-picker color="#e76ff1"></toolcool-color-picker>
+      <toolcool-color-picker id="picker" color="#e76ff1"></toolcool-color-picker>
+      <label for="shape">Shape:</label>
+      <select name="shapes" id="shapes-select">
+        <option value="">--Select a shape!--</option>
+        <option value="round">round 🌗
+        </option>
+        <option value="square">square 🟧
+        </option>
+      </select>
     </div>
     <div class="canvasWrap">
       <canvas width="2600" height="1200" id="etch-a-sketch"></canvas>
@@ -45,26 +53,25 @@
       margin-top: 50px;
     }
 
-    .controls {
-      display: flex;
+    .controls * {
+      display: inline-block;
+      position: relative;
+      z-index: 2;
+      /* display: flex;
       gap: .5rem;
       justify-content: space-between;
       align-content: flex-end;
-      align-items: end;
+      align-items: end; */
     }
 
     .controls label {
-      flex-grow: 1;
-      position: relative;
-      z-index: 2;
+      /* flex-grow: 1; */
       color: white;
-      background-color: black;
     }
 
-    toolcool-color-picker {
-      flex-grow: 2;
+    #shapes-select {
+      background-color: aliceblue;
     }
-
 
     button.shake {
       padding: 10px;
@@ -150,7 +157,7 @@
       }
     }
   </style>
-  <script src="./etch-a-sketch.js"></script>
+  <script type="module" src="./etch-a-sketch.js"></script>
   <script type="text/javascript"
     src="https://cdn.jsdelivr.net/npm/toolcool-color-picker/dist/toolcool-color-picker.min.js"></script>
 </body>

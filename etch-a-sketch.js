@@ -1,7 +1,10 @@
+import {wait} from './lib/lib'
+let picker;
 const canvas = document.querySelector('#etch-a-sketch');
 const ctx = canvas.getContext('2d');
 const shakeButton = document.querySelector('.shake');
 const range = document.querySelector('input[type="range"]');
+
 let dotWidthRange = 0;
 
 // Setup our canvas for drawing using destructuring.
@@ -90,6 +93,12 @@ function clearCanvas() {
   );
 }
 
+async function handlePicker(){
+await wait(2000);
+picker = document.querySelector('#picker').shadowRoot.querySelector('button');
+picker.style.cssText += 'transition: width .5s linear; width: 10vw;'
+}
+
 // Listen for arrow keys and touch events
 // window.addEventListener('keydown', handleEvent);
 canvas.addEventListener('mousedown', (e) => {
@@ -117,7 +126,10 @@ range.addEventListener('input', handleRange);
 
 shakeButton.addEventListener('click', clearCanvas);
 
+
+
 handleRange();
+handlePicker();
 
 /* Previous draw functs
 function draw({ key }) {
