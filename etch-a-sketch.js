@@ -4,13 +4,17 @@ const canvas = document.querySelector('#etch-a-sketch');
 const ctx = canvas.getContext('2d');
 const shakeButton = document.querySelector('.shake');
 const range = document.querySelector('input[type="range"]');
+const randomColorEl =  document.querySelector('#random-color')
+const shapesSelect =  document.querySelector('#shapes-select')
 
 let dotWidthRange = 0;
 
-// Setup our canvas for drawing using destructuring.
+//initial values
 const { width, height } = canvas;
 const MOVE_AMOUNT = 40;
 ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+randomColorEl.value = "on";
+shapesSelect.value = "round";
 
 // create random x and y,  starting points on the canvas.
 let x = Math.floor(Math.random() * width);
@@ -36,7 +40,9 @@ function handleRange(e) {
 }
 
 function draw(localX, localY) {
-  ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  if(randomColorEl.value === "on"){
+    ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  }
   ctx.beginPath();
   ctx.moveTo(localX, localY);
   ctx.lineTo(localX, localY);
@@ -94,11 +100,28 @@ function clearCanvas() {
 }
 
 async function handlePicker(){
-await wait(2000);
-picker = document.querySelector('#picker').shadowRoot.querySelector('button');
-picker.style.cssText += 'transition: width .5s linear; width: 10vw;'
+  picker = document.querySelector('#picker');
+  if(picker){
+    pickerEventsAppliyer(picker)
+    const button = picker.shadowRoot.querySelector('button');
+    button.style.cssText += 'transition: width .5s linear; width: 10vw;'
+  }else{
+    await wait(3000);
+  picker = document.querySelector('#picker');
+    if(picker){
+      pickerEventsAppliyer(picker)
+      const button = picker.shadowRoot.querySelector('button');
+      button.style.cssText += 'transition: width .5s linear; width: 10vw;'
+    }else{alert('Sorry😕. Color picker not available!')}
+  }
 }
 
+function pickerEventsAppliyer(picker){
+picker.addEventListener('change', (evt)=>{
+  randomColorEl.value = "off";
+  ctx.strokeStyle =evt.detail.hsl;
+})
+}
 // Listen for arrow keys and touch events
 // window.addEventListener('keydown', handleEvent);
 canvas.addEventListener('mousedown', (e) => {
@@ -123,8 +146,19 @@ canvas.addEventListener('touchend', (e) => handleEvent(e));
 canvas.addEventListener('touchcancel', (e) => handleEvent(e));
 
 range.addEventListener('input', handleRange);
+shapesSelect.addEventListener('input', (e)=>{
+const val =  e.currentTarget.value;
+console.log('shape:', val)
+ctx.lineCap = `${val}`;
+ctx.lineJoin = `${val}`;
+});
+randomColorEl.addEventListener('input', (e)=>{
+const val = e.currentTarget.value;
+if(val ==="off") picker.color = ctx.strokeStyle;
+})
 
 shakeButton.addEventListener('click', clearCanvas);
+
 
 
 

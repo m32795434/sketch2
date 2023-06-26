@@ -20,10 +20,18 @@
       <toolcool-color-picker id="picker" color="#e76ff1"></toolcool-color-picker>
       <label for="shape">Shape:</label>
       <select name="shapes" id="shapes-select">
-        <option value="">--Select a shape!--</option>
-        <option value="round">round 🌗
+        <option value="">--Shape--</option>
+        <option value="round"> Round 🌗
         </option>
-        <option value="square">square 🟧
+        <option value="square"> Square 🟧
+        </option>
+      </select>
+      <label for="random-color">Random?:</label>
+      <select name="random-color" id="random-color">
+        <option value="">--Random?--</option>
+        <option value="on"> On 👍
+        </option>
+        <option value="off"> Off 👎
         </option>
       </select>
     </div>
@@ -39,8 +47,6 @@
     body {
       margin: 0;
       padding: 0;
-      /* height: 100%; */
-      /* width: 100%; */
       display: grid;
       align-content: center;
       justify-content: center;
@@ -57,15 +63,13 @@
       display: inline-block;
       position: relative;
       z-index: 2;
-      /* display: flex;
-      gap: .5rem;
-      justify-content: space-between;
-      align-content: flex-end;
-      align-items: end; */
+    }
+
+    select {
+      border-radius: 5px;
     }
 
     .controls label {
-      /* flex-grow: 1; */
       color: white;
     }
 
@@ -114,6 +118,20 @@
     }
 
     @media (max-width: 843px) {
+
+      #shapes-select {
+        width: 11vw;
+      }
+
+      #random-color {
+        width: 8vw;
+      }
+
+      /* select,
+      option {
+        width: 8vw;
+      } */
+
       .wrapper canvas {
         outline: 30px solid #e80000;
         width: 600px;
