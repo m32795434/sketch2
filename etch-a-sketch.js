@@ -33,7 +33,7 @@ let dotWidthRange = 0;
 //initial values
 const { width, height } = canvas;
 const MOVE_AMOUNT = 40;
-ctx.strokeStyle = `hsl(${Math.random() * 360}, 100%, 50%)`;
+ctx.strokeStyle = "rgba(25,255,255,1)";
 randomColorEl.value = "on";
 shapesSelect.value = "round";
 
