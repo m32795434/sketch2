@@ -148,7 +148,15 @@
       }
     }
 
-    @media (max-width: 843px) {
+    @media (min-width: 741px) and (max-width: 843px) {
+      .wrapper canvas {
+        width: 750px;
+        height: 370px;
+      }
+    }
+
+
+    @media (max-width: 740px) {
 
       #shapes-select {
         width: 11vw;
@@ -157,11 +165,6 @@
       #random-color {
         width: 8vw;
       }
-
-      /* select,
-      option {
-        width: 8vw;
-      } */
 
       .wrapper canvas {
         outline: 30px solid #e80000;
