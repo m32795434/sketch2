@@ -95,7 +95,10 @@ function handleEvent(event, localX, localY) {
     y = event.touches[0].clientY - canvas.offsetTop;
   }
   const visualWidth = window.visualViewport.width;
-  if (visualWidth >= 1024 && visualWidth <= 1280) {
+
+  if (visualWidth === 1280) {
+    draw(x * 2.1666, y * 2);//width: 1200px; height: 600px;
+  } else if (visualWidth >= 1024 && visualWidth <= 1280) {
     draw(x * 2.7368, y * 2.6666);//width: 950px; height: 450px;ok
   } else if (visualWidth >= 844 && visualWidth < 1023) {//width: 790px;height: 300px;
     draw(x * 3.2911, y * 4);

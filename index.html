@@ -114,7 +114,14 @@
       touch-action: none;
     }
 
-    @media (min-width: 1024px) and (max-width: 1280px) {
+    @media (width: 1280px) {
+      .wrapper canvas {
+        width: 1200px;
+        height: 600px;
+      }
+    }
+
+    @media (min-width: 1024px) and (max-width: 1279px) {
       .wrapper canvas {
         width: 950px;
         height: 450px;
