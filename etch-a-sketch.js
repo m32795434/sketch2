@@ -7,6 +7,27 @@ const range = document.querySelector('input[type="range"]');
 const randomColorEl =  document.querySelector('#random-color')
 const shapesSelect =  document.querySelector('#shapes-select')
 
+//AUDIO SELECTORS
+var audioPlayer = document.getElementById('audio-player');
+var changeButton = document.getElementById('change-button');
+var volumeSlider = document.getElementById('volume-slider');
+const audioSrcs = [
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2F8-bit-arcade-138828.mp3?alt=media&token=2e99e284-3b94-4d20-9896-929f745e56f2', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2Fbrahms-lullaby-violin-129646.mp3?alt=media&token=85a6569f-2358-4d39-8b31-81c7dc5dcada', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2F8-bit-dream-land-142093.mp3?alt=media&token=677ab70b-d282-41fa-ae11-7607a5e5a208', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2Fdesesperebolo-9006.mp3?alt=media&token=ea240ead-6733-40e6-821c-c32ee5596e8e', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2Fhappy-epic-cinematic-8306.mp3?alt=media&token=ad1f8935-e35b-463a-826f-7eab9da0c171', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2Felixir-of-life-9420.mp3?alt=media&token=bcf93ee9-c771-4619-b662-a4076010dc90', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2Finspiring-epic-motivation-cinematic-trailer-11218.mp3?alt=media&token=2b914963-8b37-4571-acf0-99bf99cda173', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2Fsimple-piano-melody-9834.mp3?alt=media&token=c069316b-418e-40dc-b8a5-6294b192fd1b', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2Fpassword-infinity-123276.mp3?alt=media&token=01c4aa2c-c88d-4e52-bfd9-3ea2c8df50e3', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2Fsoulful-moonlight-sonata-111916.mp3?alt=media&token=a7b3244d-7a67-4703-afdf-5c6128ee3d55', 
+  'https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2Fuplifting-life-short-146426.mp3?alt=media&token=346c37a9-ed0c-4728-9fad-6a052d9189e0'];
+const audiosLength =audioSrcs.length;
+let track = -1;
+
+
+
 let dotWidthRange = 0;
 
 //initial values
@@ -159,7 +180,21 @@ if(val ==="off") picker.color = ctx.strokeStyle;
 
 shakeButton.addEventListener('click', clearCanvas);
 
+//AUDIO RELATED EVENT LESTINERS
+changeButton.addEventListener('click', function() {
+audioPlayer.pause();
+if(track+1 >= 0 && track+1 < audiosLength){
+  audioPlayer.src =  audioSrcs[++track];
+}else{
+  track = 0;
+  audioPlayer.src =  audioSrcs[track];
+}
+audioPlayer.play();
+});
 
+volumeSlider.addEventListener('input', function() {
+  audioPlayer.volume = volumeSlider.value;
+});
 
 
 handleRange();

@@ -39,6 +39,13 @@
       <canvas width="2600" height="1200" id="etch-a-sketch"></canvas>
       <div class="buttons">
         <button class="shake">Shake!</button>
+        <div id="music-player">
+          <audio id="audio-player"
+            src="https://firebasestorage.googleapis.com/v0/b/manuel-bravard-projects.appspot.com/o/audios%2F8-bit-arcade-138828.mp3?alt=media&token=2e99e284-3b94-4d20-9896-929f745e56f2"></audio>
+          <button id="change-button">🎶</button>
+          <input id="volume-slider" type="range" min="0" max="1" step="0.1" value="1">
+        </div>
+
       </div>
     </div>
   </div>
@@ -82,6 +89,19 @@
       border-radius: 2px;
       background-color: blueviolet;
       color: white;
+    }
+
+    #music-player {
+      display: inline-block;
+      margin-left: 15px;
+      position: relative;
+      z-index: 2;
+    }
+
+    #music-player button {
+      background-color: #00f114;
+      padding: 10px;
+      border-radius: 5px;
     }
 
     .wrapper canvas {
