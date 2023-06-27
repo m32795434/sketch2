@@ -102,7 +102,9 @@ function handleEvent(event, localX, localY) {
     draw(x * 2.7368, y * 2.6666);//width: 950px; height: 450px;ok
   } else if (visualWidth >= 844 && visualWidth < 1023) {//width: 790px;height: 300px;
     draw(x * 3.2911, y * 4);
-  }else if (visualWidth <=843) {//width: 600px;height: 300px;
+  }else  if (visualWidth >= 741 && visualWidth <= 843) {//width: 750px;height: 370px
+    draw(x * 3.4666, y * 3.2432);
+  }else if (visualWidth <=740) {//width: 600px;height: 300px;
     draw(x * 4.3333, y * 4);
   } else {
     // desktop
